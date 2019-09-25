@@ -1,64 +1,16 @@
-# svelte app
+# SVG Icons
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template-webpack.
+A Library of SVG Icons implemented in Svelte.
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+## Todo
 
-```bash
-npx degit sveltejs/template-webpack svelte-app
-cd svelte-app
-```
+Create script to parse raw svgs in order to create templates for changing values like height, width, and color.
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+- Import raw svg string
+- Parse string for to create new template string that has variables for values
+- Saves svelte component with the name of the svg that is able to take the component values as props
+- Svelte component reders as valid svg
+- Implement ui for changing values
+- Implement text-area for copying svg code
+- Implement svg download button
 
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start webpack:
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and the page should reload with your changes.
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```

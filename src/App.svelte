@@ -1,45 +1,64 @@
 <script>
   export let name;
   import Icon from './Icon.svelte'
-  let icons = [
-    "bathroom",
-    "beach",
-    "bed",
-    "car",
-    "chef",
-    "child-care",
-    "fishing",
-    "horseback-riding",
-    "location",
-    "people",
-    "pool",
-    "sailing",
-    "sun",
-    "surf-board",
-    "volcano",
-    "water",
-    "yoga"
-  ]
+  import Bathroom from './Bathroom.svelte'
+  import Beach from './Beach.svelte'
+  import Bed from './Bed.svelte'
+  import Car from './Car.svelte'
+  import Chef from './Chef.svelte'
+  import Childcare from './Childcare.svelte'
+  import Fishing from './Fishing.svelte'
+  import Horsebackriding from './Horsebackriding.svelte'
+  import Location from './Location.svelte'
+  import People from './People.svelte'
+  import Pool from './Pool.svelte'
+  import Sailing from './Sailing.svelte'
+  import Sun from './Sun.svelte'
+  import Surfboard from './Surfboard.svelte'
+  import Volcano from './Volcano.svelte'
+  import Water from './Water.svelte'
+  
+  let defaultSvgProps = { 
+    width: 100, 
+    height: 100, 
+    stroke: "black"
+  }
 </script>
 
 <style>
   h1 {
+    text-align: center;
     font-size: 40px;
   }
-	#icons {
+	#icons { 
     display: flex;
-    justify-content: center;
+    justify-content: left;
     flex-direction: row;
     text-align: center;
     align-content: flex-start;
     flex-wrap: wrap;
     max-width: 500px;
+    padding: 1em;
   }
 </style>
 
 <h1>SVG Icons</h1>
 <div id="icons">
-  {#each icons as icon}
-    <Icon name={icon} />
-  {/each}
+  <Bathroom {...defaultSvgProps} />
+  <Bed {...defaultSvgProps} />
+  <Beach {...defaultSvgProps} />
+  <Car {...defaultSvgProps} />
+  <Chef {...defaultSvgProps} />
+  <Childcare {...defaultSvgProps} />
+  <Fishing {...defaultSvgProps} />
+  <Horsebackriding {...defaultSvgProps} />
+  <Location {...defaultSvgProps} />
+  <People {...defaultSvgProps} />
+  <Pool {...defaultSvgProps} />
+  <Sun {...defaultSvgProps} />
+  <Sailing {...defaultSvgProps} />
+  <Surfboard {...defaultSvgProps} />
+  <Volcano {...defaultSvgProps} />
+  <Water {...defaultSvgProps} />
+  <Bathroom {...defaultSvgProps} />
 </div>

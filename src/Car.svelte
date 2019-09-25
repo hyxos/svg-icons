@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="100" width="100">
-    <g fill="none" stroke="#294242" stroke-width="4">
+<script>
+  export let width, height, stroke
+</script>
+<div class="icon">
+  <svg id=car xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height={height} width={width}>
+    <g fill="none" stroke={stroke} stroke-width="4">
         <path d="M34.997 50v10M40 50v10m4.994-10v10m5.003-10v10M55 50v10m4.998-10v10m4.999-10v10M15 65.005h69.999V45c-19.33-3.027-39.565-4.087-70.004 0z"/>
         <circle cx="74.998" cy="55.002" r="4.998"/>
         <circle cy="55.214" cx="25.423" r="4.998"/>
@@ -9,3 +13,5 @@
         <path d="M55 35s2.53-4.998 9.997-4.998c7.47 0 10 4.998 10 4.998"/>
     </g>
 </svg>
+  <label for="car">car</label>
+</div>
