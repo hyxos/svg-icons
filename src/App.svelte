@@ -21,7 +21,7 @@
   let defaultSvgProps = { 
     width: 100, 
     height: 100, 
-    stroke: "black"
+    stroke: "#010101"
   }
 </script>
 
@@ -32,18 +32,18 @@
   }
 	#icons { 
     display: flex;
-    justify-content: left;
+    justify-content: center;
     flex-direction: row;
     text-align: center;
-    align-content: flex-start;
+    align-content: center;
     flex-wrap: wrap;
-    max-width: 500px;
     padding: 1em;
   }
 </style>
 
 <h1>SVG Icons</h1>
 <div id="icons">
+  <Location {...defaultSvgProps} />
   <Bathroom {...defaultSvgProps} />
   <Bed {...defaultSvgProps} />
   <Beach {...defaultSvgProps} />
@@ -52,7 +52,6 @@
   <Childcare {...defaultSvgProps} />
   <Fishing {...defaultSvgProps} />
   <Horsebackriding {...defaultSvgProps} />
-  <Location {...defaultSvgProps} />
   <People {...defaultSvgProps} />
   <Pool {...defaultSvgProps} />
   <Sun {...defaultSvgProps} />
@@ -60,5 +59,4 @@
   <Surfboard {...defaultSvgProps} />
   <Volcano {...defaultSvgProps} />
   <Water {...defaultSvgProps} />
-  <Bathroom {...defaultSvgProps} />
 </div>

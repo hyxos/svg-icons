@@ -2,7 +2,7 @@
   export let width, height, stroke
 </script>
 <div class="icon">
-  <svg id=location xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height={height} width={width}>
+  <svg id="location" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height={height} width={width}>
     <g stroke-width="5" stroke={stroke}>
         <path d="M47.368 95S21.1 69.137 14.365 45.414C12.299 38.139 12.07 31.065 15 25 27.482-.842 67.983-.842 80 25c12.017 25.842-32.632 70-32.632 70z" fill="none"/>
         <path d="M47.712 62.526s-14.948-18-9.955-28.337 15.394-10.337 20.2 0c4.807 10.337-10.245 28.337-10.245 28.337z" fill={stroke}/>
