@@ -20,7 +20,7 @@
   
   let defaultSvgProps = { 
     width: 100, 
-    height: 100, 
+    height: 100,
     stroke: "#010101"
   }
 </script>
@@ -29,6 +29,9 @@
   h1 {
     text-align: center;
     font-size: 40px;
+  }
+  #color-input {
+    text-align: center;
   }
 	#icons { 
     display: flex;
@@ -42,6 +45,10 @@
 </style>
 
 <h1>SVG Icons</h1>
+<div id="color-input">
+  <input id="color" name="color" type="text" placeholder="black" bind:value={defaultSvgProps['stroke']}>
+  <label for="color"><em>color</em></label>
+</div>
 <div id="icons">
   <Location {...defaultSvgProps} />
   <Bathroom {...defaultSvgProps} />
