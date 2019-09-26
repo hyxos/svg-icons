@@ -29,8 +29,8 @@ let svelteTemplate = (id, svg) =>
   <label for="${id}">${id}</label>
 </div>
 `
-let loadPathString = id => path.join(__dirname, '..', '..', 'public', 'svgs', `${id}.svg`)
-let writePathString = id => path.join(__dirname, '..', `${id}.svelte`)
+let loadPathString = id => path.join(__dirname, '..', 'svgs', `${id}.svg`)
+let writePathString = id => path.join(__dirname, '..', 'src', `${id}.svelte`)
 
 ids.map(id => {
   let content = fs.readFileSync(loadPathString(id), 'utf-8')
@@ -40,5 +40,5 @@ ids.map(id => {
                   .replace('<svg', `<svg id="${id}"`)
   let output = svelteTemplate(id, content.trim())
   let fileName = id[0].toUpperCase() + id.slice(1, id.length)
-  fs.writeFileSync(writePathString(fileName), output)
-})
+  fs.writeFileSync(   writePathString(fileName), output)
+})  

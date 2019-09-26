@@ -1,14 +1,8 @@
-<script>
-  export let width, height, stroke
-</script>
-<div class="icon">
-  <svg id="fishing" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height={height} width={width}>
-    <g fill="none" stroke={stroke} stroke-width="5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="100" width="100">
+    <g fill="none" stroke="#294242" stroke-width="5">
         <path d="M16 74c-8.616-.727-12.474-55.232 36-54.436 30 3.156 36 14.964 41.92 30.778C98.14 61.61 76.966 65.472 52 50c-13.632-8.612-36 24-36 24z"/>
         <path d="M73.808 24.8C63.13 18.532 55.16 2.804 41.2 8c4.902 3.18 2.38 5.558-1.2 12M11.739 68S14.987 79.758 16 86c.64 3.948 0 12 0 12s2.196-9.648 6-12c3.403-2.102 12 0 12 0s-9.648-2.196-12-6c-2.102-3.403-2.4-10.8-2.4-10.8"/>
         <circle r="3" cy="41" cx="79"/>
         <path d="M65 30c-2.252 4.156-10.271 16.52 2.246 20"/>
     </g>
 </svg>
-  <label for="fishing">fishing</label>
-</div>
