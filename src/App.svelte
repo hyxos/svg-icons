@@ -38,7 +38,10 @@
 </div>
 <div id="icons">
   {#each heartKeys as heartKey}
-    <SVG stroke={defaultSvgProps["stroke"]}
-         paths={hearts[heartKey]} />
+    <div class="icon">
+      <SVG label={heartKey} stroke={defaultSvgProps["stroke"]}
+          paths={hearts[heartKey]} />
+      <label for={heartKey}>{heartKey}</label>
+    </div>
   {/each}
 </div>
