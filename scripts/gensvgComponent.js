@@ -1,44 +1,52 @@
-let fs = require('fs')
-let path = require('path')
+let fs = require('fs'),
+    path = require('path'),
+    xpath = require('xpath'),
+    dom = require('xmldom').DOMParser,
+    { XMLSerializer } = require('xmldom')
 let ids = [
   "bathroom",
   "beach",
   "bed",
   "car",
   "chef",
-  "childcare",
+  //"childcare",
   "fishing",
-  "horsebackriding",
+  //"horsebackriding",
   "location",
   "people",
   "pool",
-  "sailing",
+  //"sailing",
   "sun",
   "surfboard",
-  "volcano",
+  //"volcano",
   "water",
   "yoga"
 ]
 
-let svelteTemplate = (id, svg) =>
-`<script>
-  export let width, height, stroke
-</script>
-<div class="icon">
-  ${svg}
-  <label for="${id}">${id}</label>
-</div>
+let heart = (id, svg) =>
+`${id}: '${svg}'`
+let heartsObj = hearts =>
+`let hearts = {
+  ${hearts}
+}
+module.exports = hearts
 `
+
+let hearts = ''
+
 let loadPathString = id => path.join(__dirname, '..', 'svgs', `${id}.svg`)
-let writePathString = id => path.join(__dirname, '..', 'src', `${id}.svelte`)
+let writePathString = path.join(__dirname, '..', 'hearts', 'hearts.js')
 
 ids.map(id => {
-  let content = fs.readFileSync(loadPathString(id), 'utf-8')
-  content = content.replace('width="100"', 'width={width}')
-                  .replace('height="100"', 'height={height}')
-                  .replace(/"#294242"/g, '{stroke}')
-                  .replace('<svg', `<svg id="${id}"`)
-  let output = svelteTemplate(id, content.trim())
-  let fileName = id[0].toUpperCase() + id.slice(1, id.length)
-  fs.writeFileSync(   writePathString(fileName), output)
+  let raw = fs.readFileSync(loadPathString(id), 'utf-8')
+  // console.log(raw)
+  let select = xpath.useNamespaces({"svgml": "http://www.w3.org/2000/svg"})
+  let doc = new dom().parseFromString(raw, "image/svg+xml")
+  //console.log(doc.toString())
+  let nodes = select("//svgml:g/*", doc)
+  let string = heart(id, nodes.toString().replace('xmlns="http://www.w3.org/2000/svg"', "")) 
+  string = string.split(",").join("") + ",\n  "
+  hearts += string 
 })  
+
+fs.writeFileSync(writePathString, heartsObj(hearts))
