@@ -1,15 +1,12 @@
 <script>
   export let name;
-  import SVG from './SVG.svelte'
-  import hearts from '../hearts/hearts.js'
-  let heartKeys = Object.keys(hearts)
-  
-  let defaultSvgProps = { 
-    width: 100, 
-    height: 100,
+  import svgt from "./svgt.js";
+  import hearts from "../hearts/hearts.js";
+  let heartKeys = Object.keys(hearts);
+  let defaultSvgProps = {
+    dimensions: [100, 100],
     stroke: "#010101"
-  }
-  console.log(hearts)
+  };
 </script>
 
 <style>
@@ -20,7 +17,7 @@
   #color-input {
     text-align: center;
   }
-	#icons { 
+  #icons {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -33,15 +30,41 @@
 
 <h1>SVG Icons</h1>
 <div id="color-input">
-  <input id="color" name="color" type="text" placeholder="black" bind:value={defaultSvgProps['stroke']}>
-  <label for="color"><em>color</em></label>
+  <input
+    id="color"
+    name="color"
+    type="text"
+    placeholder="#010101"
+    bind:value={defaultSvgProps['stroke']} />
+  <label for="color">
+    <em>color</em>
+  </label>
+  <input
+    id="size"
+    name="size"
+    type="text"
+    placeholder="100"
+    bind:value={defaultSvgProps['dimensions'][0]} />
+  <label for="size">
+    <em>size</em>
+  </label>
 </div>
 <div id="icons">
   {#each heartKeys as heartKey}
     <div class="icon">
-      <SVG label={heartKey} stroke={defaultSvgProps["stroke"]}
-          paths={hearts[heartKey]} />
+      {@html svgt({
+        id: heartKey,
+        stroke: defaultSvgProps['stroke'],
+        content: hearts[heartKey],
+        dimensions: [defaultSvgProps['dimensions'][0], defaultSvgProps['dimensions'][0]]
+      })}
       <label for={heartKey}>{heartKey}</label>
+      <textarea>{svgt({
+        id: heartKey,
+        stroke: defaultSvgProps['stroke'],
+        content: hearts[heartKey],
+        dimensions: [defaultSvgProps['dimensions'][0], defaultSvgProps['dimensions'][0]]
+      })}</textarea>
     </div>
   {/each}
 </div>

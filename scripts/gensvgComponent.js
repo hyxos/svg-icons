@@ -37,6 +37,8 @@ let hearts = ''
 let loadPathString = id => path.join(__dirname, '..', 'svgs', `${id}.svg`)
 let writePathString = path.join(__dirname, '..', 'hearts', 'hearts.js')
 
+let urlFilter = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi
+
 ids.map(id => {
   let raw = fs.readFileSync(loadPathString(id), 'utf-8')
   // console.log(raw)
@@ -44,7 +46,8 @@ ids.map(id => {
   let doc = new dom().parseFromString(raw, "image/svg+xml")
   //console.log(doc.toString())
   let nodes = select("//svgml:g/*", doc)
-  let string = heart(id, nodes.toString().replace('xmlns="http://www.w3.org/2000/svg"', "")) 
+  let string = heart(id, nodes.toString().replace(urlFilter, "")
+                                          .replace(/xmlns=""/g, ""))
   string = string.split(",").join("") + ",\n  "
   hearts += string 
 })  
