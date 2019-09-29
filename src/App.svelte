@@ -35,6 +35,11 @@
         });
     }
   };
+
+  const handleToggle = event => {
+    let code = event.target.nextElementSibling
+    code.classList.toggle("ta")
+  }
 </script>
 
 <style>
@@ -57,9 +62,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-content: space-between;
   }
   button {
-    min-width: 6em;
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+  }
+  textarea {
+    height: 300px;
+  }
+  .code-toggle {
+    background-color: coral;
+    margin: 1em;
+    width: 100px;
+  }
+  .ta {
+    display: none;
   }
 </style>
 
@@ -95,13 +114,14 @@
       })}
       <form on:submit|preventDefault={handleSubmit}>
         <label for={heartKey}>{heartKey}</label>
-        <textarea>{svgt({
+        <span class="code-toggle" on:click={handleToggle}>>code</span>
+        <textarea class="ta">{svgt({
             id: heartKey,
             stroke: defaultSvgProps['stroke'],
             content: hearts[heartKey],
             dimensions: [defaultSvgProps['dimensions']]
           })}</textarea>
-        <button type="submit">Copy</button>
+        <button type="submit">Copy -> 📋</button>
       </form>
     </div>
   {/each}
