@@ -7,31 +7,34 @@
     dimensions: 100,
     stroke: "#010101"
   };
+  
   const handleSubmit = event => {
-    let button = event.target.elements[1]
-    let code = event.target.elements[0].value.trim()
+    let button = event.target.elements[1];
+    let code = event.target.elements[0].value.trim();
     if (code) {
-    navigator.clipboard.writeText(code)
-      .then(() => {
-        console.log("copied")
-        if (button.innerText !== 'Copied!') {
-          const originalText = button.innerText;
-          const originalColor = button.style.backgroundColor
-          button.innerText = 'Copied!';
-          button.style.backgroundColor = "#4cbb17";
-          setTimeout(() => {
-            button.innerText = originalText
-            button.style.backgroundColor = originalColor
-          }, 1500);
-        }
-
-      })
-      .catch(err => {
-        console.log('Something went wrong', err);
-      })
-  }
-
-  }
+      navigator.clipboard
+        .writeText(code)
+        .then(() => {
+          console.log("copied");
+          if (button.innerText !== "Copied!") {
+            const originalText = button.innerText
+            const originalColor = button.style.color
+            const originalBGColor = button.style.backgroundColor
+            button.innerText = "Copied!"
+            button.style.color = "lightgray"
+            button.style.backgroundColor = defaultSvgProps['stroke']
+            setTimeout(() => {
+              button.innerText = originalText
+              button.style.color = originalColor
+              button.style.backgroundColor = originalBGColor
+            }, 1500)
+          }
+        })
+        .catch(err => {
+          console.log("Something went wrong", err);
+        });
+    }
+  };
 </script>
 
 <style>
@@ -49,7 +52,6 @@
     text-align: center;
     align-content: center;
     flex-wrap: wrap;
-    padding: 1em;
   }
   form {
     display: flex;
@@ -94,11 +96,11 @@
       <form on:submit|preventDefault={handleSubmit}>
         <label for={heartKey}>{heartKey}</label>
         <textarea>{svgt({
-          id: heartKey,
-          stroke: defaultSvgProps['stroke'],
-          content: hearts[heartKey],
-          dimensions: [defaultSvgProps['dimensions']]
-        })}</textarea>
+            id: heartKey,
+            stroke: defaultSvgProps['stroke'],
+            content: hearts[heartKey],
+            dimensions: [defaultSvgProps['dimensions']]
+          })}</textarea>
         <button type="submit">Copy</button>
       </form>
     </div>
