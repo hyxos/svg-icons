@@ -1,5 +1,4 @@
 <script>
-  export let name;
   import svgt from "./svgt.js";
   import hearts from "../hearts/hearts.js";
   let heartKeys = Object.keys(hearts);
@@ -38,8 +37,18 @@
 
   const handleToggle = event => {
     let code = event.target.nextElementSibling
+    let span = event.target
+    if (span.innerText === '> code') {
+      span.innerText = 'v hide'
+      span.style.color = "white"
+    }
+    else {
+      span.innerText = '> code'
+      span.style.color = '#010101'
+    }
     code.classList.toggle("ta")
   }
+  const handleDownload = content => window.URL.createObjectURL(new Blob([content], {type: 'text/csv'}))
 </script>
 
 <style>
@@ -62,7 +71,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: space-between;
+    align-content: center;
   }
   button {
     width: 100px;
@@ -71,11 +80,14 @@
   }
   textarea {
     height: 300px;
+    width: 100px;
   }
   .code-toggle {
-    background-color: coral;
-    margin: 1em;
+    margin: 5px;
+    background-color: #f3a285;
     width: 100px;
+    text-align: left;
+    padding: 2px 6px;
   }
   .ta {
     display: none;
@@ -112,9 +124,9 @@
         content: hearts[heartKey],
         dimensions: [defaultSvgProps['dimensions']]
       })}
+      <label for={heartKey}>{heartKey}</label>
       <form on:submit|preventDefault={handleSubmit}>
-        <label for={heartKey}>{heartKey}</label>
-        <span class="code-toggle" on:click={handleToggle}>>code</span>
+        <span class="code-toggle" on:click={handleToggle}>> code</span>
         <textarea class="ta">{svgt({
             id: heartKey,
             stroke: defaultSvgProps['stroke'],
@@ -123,6 +135,12 @@
           })}</textarea>
         <button type="submit">Copy -> 📋</button>
       </form>
+      <a href={handleDownload(svgt({
+        id: heartKey,
+        stroke: defaultSvgProps['stroke'],
+        content: hearts[heartKey],
+        dimensions: [defaultSvgProps['dimensions']]
+      }))} download={heartKey + '.svg'}>Download</a>
     </div>
   {/each}
 </div>
