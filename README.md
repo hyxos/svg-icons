@@ -1,6 +1,6 @@
 # SVG Icons
 
-A Library of SVG Icons implemented in Svelte.
+A Library of Open Source SVG Icons implemented in Svelte.
 
 ## Todo
 
