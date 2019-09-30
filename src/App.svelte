@@ -15,11 +15,11 @@
         .writeText(code)
         .then(() => {
           console.log("copied");
-          if (button.innerText !== "Copied!") {
+          if (button.innerText !== "copied!") {
             const originalText = button.innerText
             const originalColor = button.style.color
             const originalBGColor = button.style.backgroundColor
-            button.innerText = "Copied!"
+            button.innerText = "copied!"
             button.style.color = "lightgray"
             button.style.backgroundColor = defaultSvgProps['stroke']
             setTimeout(() => {
@@ -74,9 +74,10 @@
     align-content: center;
   }
   button {
+    display: block;
     width: 100px;
     height: 30px;
-    font-size: 12px;
+    font-size: 10px;  
   }
   textarea {
     height: 300px;
@@ -91,6 +92,12 @@
   }
   .ta {
     display: none;
+  }
+  .download {
+    display: block;
+    border: 1px solid #010101;
+    background-color: cornflowerblue;
+    color: whitesmoke;
   }
 </style>
 
@@ -133,9 +140,9 @@
             content: hearts[heartKey],
             dimensions: [defaultSvgProps['dimensions']]
           })}</textarea>
-        <button type="submit">Copy -> 📋</button>
+        <button type="submit">copy -> 📋</button>
       </form>
-      <a href={handleDownload(svgt({
+      <a class="download" href={handleDownload(svgt({
         id: heartKey,
         stroke: defaultSvgProps['stroke'],
         content: hearts[heartKey],
