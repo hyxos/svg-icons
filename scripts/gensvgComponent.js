@@ -11,16 +11,17 @@ let ids = [
   "chef",
   //"childcare",
   "fishing",
-  //"horsebackriding",
+  "horsebackriding",
   "location",
   "people",
   "pool",
-  //"sailing",
+  "sailing",
   "sun",
   "surfboard",
   //"volcano",
   "water",
   "yoga"
+  //"cleaning"
 ]
 
 let heart = (id, svg) =>
